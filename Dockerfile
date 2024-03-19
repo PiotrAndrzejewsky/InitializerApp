@@ -1,5 +1,8 @@
 FROM openjdk:21
 
+# fixes error 'xargs is not available'
+RUN microdnf install findutils
+
 WORKDIR /app
 
 COPY gradlew ./
