@@ -6,6 +6,7 @@ import io.jsonwebtoken.SignatureAlgorithm
 import io.jsonwebtoken.security.Keys
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Configuration
+import reactor.core.publisher.Flux
 import java.util.Date
 
 @Configuration
@@ -44,10 +45,10 @@ class JwtUtils(
         }
     }
 
-    fun generateTokenPair(username: String): JwtTokens {
+    fun generateTokenPair(username: String): Flux<JwtTokens> {
         val accessToken = generateToken(username, ACCESS_EXPIRATION_TIME_MS)
         val refreshToken = generateToken(username, REFRESH_EXPIRATION_TIME_MS)
-        return JwtTokens(accessToken, refreshToken)
+        return Flux.just(JwtTokens(accessToken, refreshToken))
     }
 
     data class JwtTokens (

@@ -12,24 +12,20 @@ import reactor.core.publisher.Mono
 @Component
 @Order(1)
 class JwtAuthenticationFilter(
-    val listOfAllowedPaths: List<String>,
-    val jwtUtils: JwtUtils
+    val jwtUtils: JwtUtils,
+    val handlerMethodService: HandlerMethodService
 ) : WebFilter {
 
     override fun filter(exchange: ServerWebExchange, chain: WebFilterChain): Mono<Void> {
-        val path = exchange.request.path.pathWithinApplication().value()
-
-        if (listOfAllowedPaths.contains(path)) {
-            return chain.filter(exchange)
-        }
-
-        if (path == "/refreshToken") {
-            val refreshHeader = exchange.request.headers.getFirst("RefreshToken")
-            return verifyHeader(refreshHeader, exchange, chain)
-        }
-
-        val authorizationHeader = exchange.request.headers.getFirst("Authorization")
-        return verifyHeader(authorizationHeader, exchange, chain)
+        return handlerMethodService.hasAllowedPathAnnotation(exchange)
+            .flatMap { hasAnnotation ->
+                if (hasAnnotation) {
+                    chain.filter(exchange)
+                } else {
+                    val authorizationHeader = exchange.request.headers.getFirst("Authorization")
+                    verifyHeader(authorizationHeader, exchange, chain)
+                }
+            }
     }
 
     private fun verifyHeader(header: String?, exchange: ServerWebExchange, chain: WebFilterChain): Mono<Void> {
