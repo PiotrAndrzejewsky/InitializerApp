@@ -33,6 +33,7 @@ dependencies {
 	testImplementation("io.projectreactor:reactor-test")
 	implementation("org.aspectj:aspectjrt:1.9.7")
 	implementation("org.springframework.boot:spring-boot-starter-aop")
+	implementation("io.github.microutils:kotlin-logging:2.0.11")
 }
 
 tasks.withType<KotlinCompile> {

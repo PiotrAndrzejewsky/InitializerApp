@@ -11,13 +11,13 @@ class JwtController(
 ) {
 
     @PostMapping("/refreshToken")
-    @AllowedPath
+    @AllowPath
     fun refreshToken(@RequestBody username: String): Flux<JwtUtils.JwtTokens> {
         return jwtUtils.generateTokenPair(username)
     }
 
     @PostMapping("/test")
-    @AllowedPath
+    @AllowPath
     fun test(): String {
         return "TEST"
     }
