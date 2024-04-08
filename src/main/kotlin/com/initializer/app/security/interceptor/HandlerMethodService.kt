@@ -1,6 +1,6 @@
 package com.initializer.app.security.interceptor
 
-import com.initializer.app.security.AllowedPath
+import com.initializer.app.security.AllowPath
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.ApplicationContext
 import org.springframework.stereotype.Service
@@ -20,7 +20,7 @@ class HandlerMethodService {
         return requestMappingHandlerMapping.getHandler(exchange)
             .map { handler ->
                 if (handler is HandlerMethod) {
-                    handler.hasMethodAnnotation(AllowedPath::class.java)
+                    handler.hasMethodAnnotation(AllowPath::class.java)
                 } else {
                     false
                 }
