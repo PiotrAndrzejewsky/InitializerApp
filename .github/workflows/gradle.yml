@@ -27,7 +27,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Generate classes from api
-        run: gradlew openApiGenerate
+        run: ./gradlew openApiGenerate
 
       - name: Build with Gradle
         run: |
