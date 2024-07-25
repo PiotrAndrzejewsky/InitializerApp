@@ -1,0 +1,5 @@
+content:
+    application/json:
+        schema:
+            $ref: "../schemas/forms/ActivateUserForm.yaml"
+required: true

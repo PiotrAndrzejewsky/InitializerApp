@@ -1,0 +1,11 @@
+properties:
+    userId:
+        type: number
+
+    confirmationCode:
+        type: string
+        maxLength: 6
+
+required:
+    - userId
+    - confirmationCode

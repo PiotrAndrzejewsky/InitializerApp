@@ -1,7 +1,7 @@
 package com.initializer.app.security
 
 import com.initializer.app.security.interceptor.HandlerMethodService
-import com.initializer.app.security.interceptor.JwtAuthenticationFilter
+import com.initializer.app.security.interceptor.CustomJwtAuthenticationFilter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.reactive.config.EnableWebFlux
@@ -15,7 +15,7 @@ class WebConfig(
 ): WebFluxConfigurer {
 
     @Bean
-    fun jwtAuthenticationFilter(): JwtAuthenticationFilter {
-        return JwtAuthenticationFilter(jwtUtils, handlerMethodService)
+    fun jwtAuthenticationFilter(): CustomJwtAuthenticationFilter {
+        return CustomJwtAuthenticationFilter(jwtUtils, handlerMethodService)
     }
 }

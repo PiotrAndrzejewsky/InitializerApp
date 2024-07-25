@@ -1,0 +1,5 @@
+ProcessException:
+    $ref: "./entities/ProcessException.yaml"
+
+User:
+    $ref: "./entities/User.yaml"

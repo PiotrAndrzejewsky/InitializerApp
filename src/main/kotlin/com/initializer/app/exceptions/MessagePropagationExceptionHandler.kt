@@ -6,12 +6,11 @@ import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ControllerAdvice
 import org.springframework.web.bind.annotation.ExceptionHandler
-import org.springframework.web.reactive.result.method.annotation.ResponseEntityExceptionHandler
 import org.springframework.web.server.ServerWebExchange
 import reactor.core.publisher.Mono
 
 @ControllerAdvice
-class MessagePropagationExceptionHandler : ResponseEntityExceptionHandler() {
+class MessagePropagationExceptionHandler {
 
     companion object {
         private val LOG = KotlinLogging.logger { }
@@ -25,9 +24,11 @@ class MessagePropagationExceptionHandler : ResponseEntityExceptionHandler() {
         requestBody.stackTrace = arrayOf()
         LOG.error { "Process Exception was thrown with exception message: ${ex.message}" }
 
-        return handleExceptionInternal(
-            ex, requestBody,
-            HttpHeaders(), ex.status ?: HttpStatus.INTERNAL_SERVER_ERROR, request
+        return Mono.just(
+            ResponseEntity(
+                requestBody,
+                ex.status ?: HttpStatus.INTERNAL_SERVER_ERROR
+            )
         )
     }
 }

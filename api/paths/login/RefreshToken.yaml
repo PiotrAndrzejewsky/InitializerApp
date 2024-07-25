@@ -1,0 +1,17 @@
+get:
+
+  summary: refresh access token
+
+  operationId: refreshToken
+
+  tags:
+    - Login
+
+  description: Refreshes token
+
+  responses:
+    '200':
+      $ref: "../../responses/RefreshTokenResponse.yaml"
+
+    default:
+      $ref: "../../responses/ProcessExceptionResponse.yaml"

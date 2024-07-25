@@ -24,6 +24,6 @@ class HandlerMethodService {
                 } else {
                     false
                 }
-            }
+            }.defaultIfEmpty(false)
     }
 }
