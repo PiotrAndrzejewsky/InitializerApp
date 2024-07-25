@@ -13,11 +13,6 @@ import javax.validation.Valid
 @ControllerAdvice
 class CustomLoginApi() : UserApi {
 
-
-    fun userLoginPost() : BigDecimal {
-        return 1.toBigDecimal()
-    }
-
     @AllowPath
     override fun userActivatePost(@Valid @RequestBody activateUserForm: ActivateUserForm): ResponseEntity<Unit> {
         TODO("Not yet implemented")

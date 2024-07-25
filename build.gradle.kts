@@ -61,6 +61,8 @@ openApiGenerate {
 	configOptions.set(
 		mapOf(
 			"interfaceOnly" to "true",
+			"apiPackage" to "com.initializer.app.api.generated",
+			"modelPackage" to "com.initializer.app.model.generated"
 		)
 	)
 }
@@ -69,6 +71,7 @@ sourceSets {
 	main {
 		kotlin {
 			srcDir("src/main/kotlin")
+			srcDir("src/main/resources/generated")
 		}
 	}
 }
