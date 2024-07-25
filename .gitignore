@@ -1,6 +1,10 @@
 # Created by https://www.toptal.com/developers/gitignore/api/intellij,webstorm,gradle,visualstudio,visualstudiocode,java,kotlin,git
 # Edit at https://www.toptal.com/developers/gitignore?templates=intellij,webstorm,gradle,visualstudio,visualstudiocode,java,kotlin,git
 
+### Generated classes ###
+src/main/resources/generated
+
+
 ### Git ###
 # Created by git for backups. To disable backups in Git:
 # $ git config --global mergetool.keepBackup false

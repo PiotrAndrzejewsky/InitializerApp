@@ -1,0 +1,38 @@
+openapi: "3.0.2"
+info:
+    title: Initializer App API
+    version: "1.0"
+servers:
+    -   url: http://localhost:8080
+tags:
+    - name: Login
+
+components:
+    securitySchemes:
+        Authorization:
+            type: http
+            scheme: bearer
+            bearerFormat: JWT
+        RefreshToken:
+            type: http
+            scheme: bearer
+            bearerFormat: JWT
+
+    schemas:
+        ProcessException:
+            $ref: "./schemas/entities/ProcessException.yaml"
+        User:
+            $ref: "./schemas/entities/User.yaml"
+
+paths:
+    /user/login:
+       $ref: "./paths/login/Login.yaml"
+
+    /user/create:
+        $ref: "./paths/login/SignUp.yaml"
+
+    /refresh:
+        $ref: "./paths/login/RefreshToken.yaml"
+
+    /user/activate:
+        $ref: "./paths/login/ActivateUser.yaml"

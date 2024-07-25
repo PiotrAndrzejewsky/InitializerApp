@@ -1,0 +1,4 @@
+description: Refresh token header for the API
+schema:
+  type: string
+  pattern: "^[A-Za-z0-9-_=]+\\.[A-Za-z0-9-_=]+\\.?[A-Za-z0-9-_.+/=]*$"

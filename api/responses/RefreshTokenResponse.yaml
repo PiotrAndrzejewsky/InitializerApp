@@ -1,0 +1,6 @@
+description: Token was refreshed successfully
+headers:
+    Authorization:
+        $ref: "./../headers/AuthorizationHeader.yaml"
+    RefreshToken:
+        $ref: "./../headers/RefreshTokenHeader.yaml"

@@ -1,0 +1,17 @@
+post:
+  summary: login user
+
+  tags:
+    - Login
+
+  description: This endpoint is for authenticating user
+
+  requestBody:
+    $ref: "../../requestBodies/UserRequestBody.yaml"
+
+  responses:
+    '200':
+      $ref: "../../responses/LoginResponse.yaml"
+
+    default:
+      $ref: "../../responses/ProcessExceptionResponse.yaml"

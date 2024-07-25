@@ -13,7 +13,7 @@ import reactor.core.publisher.Mono
 
 @Component
 @Order(1)
-class JwtAuthenticationFilter(
+class CustomJwtAuthenticationFilter(
     val jwtUtils: JwtUtils,
     val handlerMethodService: HandlerMethodService
 ) : WebFilter {

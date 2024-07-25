@@ -1,18 +1,19 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	id("org.springframework.boot") version "3.2.3"
+	id("org.springframework.boot") version "2.6.1"
 	id("io.spring.dependency-management") version "1.1.4"
 	kotlin("jvm") version "1.9.22"
 	kotlin("plugin.spring") version "1.9.22"
 	kotlin("plugin.jpa") version "1.9.22"
+	id("org.openapi.generator") version "5.3.0"
 }
 
 group = "com.initializer"
 version = "0.0.1-SNAPSHOT"
 
 java {
-	sourceCompatibility = JavaVersion.VERSION_21
+	sourceCompatibility = JavaVersion.VERSION_17
 }
 
 repositories {
@@ -34,15 +35,40 @@ dependencies {
 	implementation("org.aspectj:aspectjrt:1.9.7")
 	implementation("org.springframework.boot:spring-boot-starter-aop")
 	implementation("io.github.microutils:kotlin-logging:2.0.11")
+	implementation("javax.validation:validation-api:2.0.1.Final")
 }
 
 tasks.withType<KotlinCompile> {
 	kotlinOptions {
 		freeCompilerArgs += "-Xjsr305=strict"
-		jvmTarget = "21"
+		jvmTarget = "17"
 	}
 }
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+}
+
+openApiGenerate {
+	globalProperties.set(mapOf(
+		"apis" to "",
+		"models" to ""
+	))
+	generatorName.set("kotlin-spring")
+	inputSpec.set("$projectDir/api/openapi.yaml")
+	outputDir.set("$projectDir/src/main/resources/generated")
+
+	configOptions.set(
+		mapOf(
+			"interfaceOnly" to "true",
+		)
+	)
+}
+
+sourceSets {
+	main {
+		kotlin {
+			srcDir("src/main/kotlin")
+		}
+	}
 }

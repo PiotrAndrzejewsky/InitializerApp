@@ -1,0 +1,5 @@
+description: contains an process exception
+content:
+    application/json:
+        schema:
+            $ref: "../schemas/entities/ProcessException.yaml"
