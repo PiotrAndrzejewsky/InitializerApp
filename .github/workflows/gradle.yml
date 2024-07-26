@@ -47,6 +47,7 @@ jobs:
 
       - name: Build Docker Image
         run: |
+          chmod +x gradlew
           ./gradlew openApiGenerate || exit 1
           docker build -t initializer-app . || exit 1
 
