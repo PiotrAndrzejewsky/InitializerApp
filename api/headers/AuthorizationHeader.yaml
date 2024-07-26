@@ -1,0 +1,4 @@
+description: Authorization header for the API
+schema:
+  type: string
+  pattern: "^Bearer [A-Za-z0-9-_=]+\\.[A-Za-z0-9-_=]+\\.?[A-Za-z0-9-_.+/=]*$"

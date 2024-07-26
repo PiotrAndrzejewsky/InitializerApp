@@ -1,0 +1,17 @@
+post:
+    summary: Activate user
+
+    tags:
+        - Login
+
+    description: This endpoint is responsible for activating user and it requires and activation code that user can get from an email after registration
+
+    requestBody:
+        $ref: "../../requestBodies/ActivateUserRequestBody.yaml"
+
+    responses:
+        '200':
+            description: User activated successfully
+
+        default:
+            $ref: "../../responses/ProcessExceptionResponse.yaml"

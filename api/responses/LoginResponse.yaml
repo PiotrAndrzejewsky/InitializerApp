@@ -1,0 +1,11 @@
+description: contains an user id
+headers:
+    Authorization:
+        $ref: "./../headers/AuthorizationHeader.yaml"
+    RefreshToken:
+        $ref: "./../headers/RefreshTokenHeader.yaml"
+content:
+  application/json:
+    schema:
+      type: number
+      min: 0
